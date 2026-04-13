@@ -1,1 +1,28 @@
-// Add JS here
+document.addEventListener('DOMContentLoaded', () => {
+    const generateBtn = document.getElementById('generate');
+    const numbersContainer = document.getElementById('numbers');
+
+    generateBtn.addEventListener('click', () => {
+        const numbers = generateLottoNumbers();
+        displayNumbers(numbers);
+    });
+
+    function generateLottoNumbers() {
+        const numbers = new Set();
+        while (numbers.size < 6) {
+            const randomNum = Math.floor(Math.random() * 45) + 1;
+            numbers.add(randomNum);
+        }
+        return Array.from(numbers).sort((a, b) => a - b);
+    }
+
+    function displayNumbers(numbers) {
+        numbersContainer.innerHTML = '';
+        numbers.forEach(number => {
+            const numberElement = document.createElement('div');
+            numberElement.classList.add('number');
+            numberElement.textContent = number;
+            numbersContainer.appendChild(numberElement);
+        });
+    }
+});
