@@ -1,30 +1,56 @@
 
+:root {
+    --bg-color: #f7f7f7;
+    --container-bg: #fff;
+    --text-color: #333;
+    --button-bg: #007aff;
+    --button-hover: #0056b3;
+    --number-bg: #f0f0f0;
+    --number-text: #333;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --container-bg: #2d2d2d;
+    --text-color: #f0f0f0;
+    --button-bg: #3391ff;
+    --button-hover: #66a9ff;
+    --number-bg: #444;
+    --number-text: #fff;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
 html, body {
     height: 100%;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f7f7f7;
+    background: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
+    position: relative;
     text-align: center;
     padding: 40px;
     border-radius: 15px;
-    background: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: var(--container-bg);
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 h1 {
     font-size: 2.5em;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
 #generate {
-    background-color: #007aff;
+    background-color: var(--button-bg);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -36,7 +62,7 @@ h1 {
 }
 
 #generate:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover);
     transform: translateY(-2px);
 }
 
@@ -49,15 +75,33 @@ h1 {
 .number {
     width: 60px;
     height: 60px;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: var(--number-bg);
+    color: var(--number-text);
     font-size: 1.8em;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--shadow);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(128, 128, 128, 0.1);
 }
 
 /* Responsive Design */
